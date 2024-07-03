@@ -1,0 +1,6 @@
+Card de exercício deve mostrar a carga e a unidade
+Card de exercício deve ter um botão que aumenta a carga
+Manter o botão pressionado abrirá um modal
+	O modal permite modificar a carga
+	O modal permite escolher o incremento de carga
+Criar componente lista de exercícios
