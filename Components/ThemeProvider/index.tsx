@@ -1,7 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { DarkTheme } from "./themes";
 import { colorTheme } from "../../Interfaces";
-import { Text } from "react-native";
 
 interface IThemeContext {
   change: () => void;

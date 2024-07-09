@@ -8,4 +8,5 @@ export interface colorTheme {
   card: string;
   text: string;
   cardText: string;
+  listColor: string;
 }

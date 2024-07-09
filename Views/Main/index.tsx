@@ -1,23 +1,25 @@
 import { StyleSheet, Text, View } from "react-native";
 import { useTheme } from "../../Components/ThemeProvider";
 import { StatusBar } from "expo-status-bar";
-import ExerciseCard from "../../Components/ExerciseCard";
 import { IExercise } from "../../Interfaces";
-import { DarkTheme } from "../../Components/ThemeProvider/themes";
+import { useState } from "react";
+import ExerciseList from "../../Components/ExerciseList";
 
 const Main = () => {
   const theme = useTheme().get;
-  const crucifixo: IExercise = {
-    name: "crucifixo máquina",
-    load: 50,
-    unit: "kg",
-  };
+  const [list, setList] = useState<IExercise[]>([
+    {
+      name: "crucifixo máquina",
+      load: 50,
+      unit: "kg",
+    },
+  ]);
   const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: theme.background,
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "flex-start",
     },
     text: {
       color: theme.text,
@@ -27,9 +29,8 @@ const Main = () => {
   });
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Começando</Text>
-      <StatusBar style="auto" />
-      <ExerciseCard {...crucifixo} />
+      <StatusBar style="auto" hidden />
+      <ExerciseList list={list} setList={setList} />
     </View>
   );
 };
