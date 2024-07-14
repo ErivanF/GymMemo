@@ -1,4 +1,4 @@
-import ThemeProvider from "./Components/ThemeProvider";
+import ThemeProvider from "./Providers/ThemeProvider";
 import Main from "./Views/Main";
 
 export default function App() {

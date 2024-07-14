@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { useTheme } from "../../Components/ThemeProvider";
+import { useTheme } from "../../Providers/ThemeProvider";
 import { StatusBar } from "expo-status-bar";
 import { IExercise } from "../../Interfaces";
 import { useState } from "react";

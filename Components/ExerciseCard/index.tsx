@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { IExercise } from "../../Interfaces";
-import { useTheme } from "../ThemeProvider";
+import { useTheme } from "../../Providers/ThemeProvider";
 
 const ExerciseCard = (exercise: IExercise) => {
   const theme = useTheme().get;

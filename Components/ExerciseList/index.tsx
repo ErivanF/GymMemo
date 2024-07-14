@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { IExercise } from "../../Interfaces";
 import ExerciseCard from "../ExerciseCard";
-import { useTheme } from "../ThemeProvider";
+import { useTheme } from "../../Providers/ThemeProvider";
 interface props {
   list: IExercise[];
   setList: React.Dispatch<React.SetStateAction<IExercise[]>>;
