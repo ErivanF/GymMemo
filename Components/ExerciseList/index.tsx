@@ -1,12 +1,9 @@
 import { StyleSheet, View } from "react-native";
-import { IExercise } from "../../Interfaces";
 import ExerciseCard from "../ExerciseCard";
 import { useTheme } from "../../Providers/ThemeProvider";
-interface props {
-  list: IExercise[];
-  setList: React.Dispatch<React.SetStateAction<IExercise[]>>;
-}
-const ExerciseList = ({ list, setList }: props) => {
+import { UseList } from "../../Providers/ListProvider";
+
+const ExerciseList = () => {
   const theme = useTheme().get;
   const styles = StyleSheet.create({
     container: {
@@ -17,11 +14,11 @@ const ExerciseList = ({ list, setList }: props) => {
       marginBottom: 16,
     },
   });
-
+  const list = UseList().get;
   return (
     <View style={styles.container}>
-      {list.map((exercise) => (
-        <ExerciseCard {...exercise} key={Math.random()} />
+      {list.map((exercise, index) => (
+        <ExerciseCard index={index} exercise={exercise} key={Math.random()} />
       ))}
     </View>
   );

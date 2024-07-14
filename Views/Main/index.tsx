@@ -7,13 +7,6 @@ import ExerciseList from "../../Components/ExerciseList";
 
 const Main = () => {
   const theme = useTheme().get;
-  const [list, setList] = useState<IExercise[]>([
-    {
-      name: "crucifixo máquina",
-      load: 50,
-      unit: "kg",
-    },
-  ]);
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -30,7 +23,7 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hidden />
-      <ExerciseList list={list} setList={setList} />
+      <ExerciseList />
     </View>
   );
 };

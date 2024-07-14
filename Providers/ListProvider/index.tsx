@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { IExercise } from "../../Interfaces";
 
 interface ListProviderProps {
@@ -11,12 +11,14 @@ interface IListContext {
   change: (i: number, changes: Partial<IExercise>) => void;
   remove: (i: number) => void;
 }
+const ListContext = createContext<IListContext>({} as IListContext);
 const ListProvider = ({ children }: ListProviderProps) => {
   const [list, setList] = useState<IExercise[]>([
     {
       name: "crucifixo máquina",
       load: 50,
       unit: "kg",
+      increment: 5,
     },
   ]);
   const get = () => list;
@@ -28,7 +30,6 @@ const ListProvider = ({ children }: ListProviderProps) => {
     setList(newList);
   };
   const remove = (i: number) => setList(list.filter((_, index) => index !== i));
-  const ListContext = createContext<IListContext>({} as IListContext);
 
   return (
     <ListContext.Provider value={{ get: get(), add, getOne, change, remove }}>
@@ -36,4 +37,5 @@ const ListProvider = ({ children }: ListProviderProps) => {
     </ListContext.Provider>
   );
 };
+export const UseList = () => useContext(ListContext);
 export default ListProvider;

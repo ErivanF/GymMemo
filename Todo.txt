@@ -1,10 +1,8 @@
-Card de exercício deve ter um botão que aumenta a carga
-provider para lista de exercícios
-	função de criar um exercício
-	função de ver um exercício
-	função de ver todos os exercícios
-	função de modificar um exercício
-	função de excluir um exercício
+criar modal para criar exercício
+	modal deve aparecer ao manter pressionado o card de exercício
+	modal deve ter campos para nome, carga, unidade e incremento
+	modal deve verificar se os campos estão preenchidos
+	modal deve criar um exercício novo
 
 criar tela de exercício
 	tela mostra nome do exercício
@@ -13,4 +11,3 @@ criar tela de exercício
 		ao clicar, vira uma caixa de texto para modificar
 	tela mostra unidades do exercício
 		ao clicar, vira uma caixa de texto para modificar
-

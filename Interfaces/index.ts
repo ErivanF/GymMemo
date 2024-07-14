@@ -2,6 +2,7 @@ export type IExercise = {
   name: string;
   load: number;
   unit: string;
+  increment: number;
 };
 export interface colorTheme {
   background: string;
