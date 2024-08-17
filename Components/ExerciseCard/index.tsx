@@ -10,18 +10,19 @@ interface IProps {
 
 const ExerciseCard = ({ exercise, index }: IProps) => {
   const theme = useTheme().get;
-  const { change } = UseList();
   const styles = StyleSheet.create({
     card: {
-      backgroundColor: theme.card,
+      backgroundColor: theme.background3,
       padding: 16,
-      borderRadius: 8,
+      borderRadius: 12,
       marginBottom: 16,
       maxHeight: "auto",
       alignContent: "center",
       flexDirection: "row",
       justifyContent: "space-between",
-      width: "90%",
+      minWidth: "90%",
+      borderWidth: 1,
+      borderColor: theme.border,
     },
     title: {
       fontSize: 20,
@@ -42,31 +43,18 @@ const ExerciseCard = ({ exercise, index }: IProps) => {
       marginBottom: 8,
     },
     button: {
-      backgroundColor: theme.listColor,
+      backgroundColor: theme.background2,
       alignSelf: "flex-end",
       justifyContent: "center",
       padding: 8,
       borderRadius: 4,
       textAlign: "center",
-      color: theme.text,
+      color: theme.cardText,
     },
   });
   return (
     <View style={styles.card}>
       <Text style={styles.name}>{exercise.name}</Text>
-      <Text style={styles.load}>
-        {exercise.load} {exercise.unit}
-      </Text>
-      <TouchableWithoutFeedback
-        onPress={() => {
-          const load = exercise.load + exercise.increment;
-          change(index, { load });
-        }}
-      >
-        <View style={styles.button}>
-          <Text style={{ color: theme.cardText }}>+{exercise.increment}</Text>
-        </View>
-      </TouchableWithoutFeedback>
     </View>
   );
 };

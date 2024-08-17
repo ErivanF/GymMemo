@@ -1,13 +1,16 @@
 export type IExercise = {
   name: string;
-  load: number;
+  series: [ISeries];
   unit: string;
-  increment: number;
+};
+type ISeries = {
+  reps: number;
+  load: number;
 };
 export interface colorTheme {
   background: string;
-  card: string;
-  text: string;
+  background2: string;
+  background3: string;
+  border: string;
   cardText: string;
-  listColor: string;
 }
