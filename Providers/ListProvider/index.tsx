@@ -1,38 +1,68 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { IExercise } from "../../Interfaces";
-
-interface ListProviderProps {
-  children: ReactNode;
-}
+import { createContext, useContext, useEffect, useState } from "react";
+import { IExercise, ProviderProps } from "../../Interfaces";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React from "react";
 interface IListContext {
   get: IExercise[];
   getOne: (i: number) => IExercise;
   add: (exercise: IExercise) => void;
   change: (i: number, changes: Partial<IExercise>) => void;
   remove: (i: number) => void;
+  name?: String;
+  load: (name: String) => Promise<void>;
 }
 const ListContext = createContext<IListContext>({} as IListContext);
-const ListProvider = ({ children }: ListProviderProps) => {
-  const [list, setList] = useState<IExercise[]>([
-    {
-      name: "crucifixo máquina",
-      load: 50,
-      unit: "kg",
-      increment: 5,
-    },
-  ]);
+const ListProvider = ({ children }: ProviderProps) => {
+  const [listName, setName] = useState<String>("");
+  const [list, setList] = useState<IExercise[]>([]);
+  const load = async (name: String) => {
+    setName(name);
+    const jsonData = AsyncStorage.getItem(`@GymMemo:list:${name}`);
+    if ((await jsonData) === null) {
+      setList([]);
+      save([]);
+    } else {
+      const data = JSON.parse((await jsonData) as string);
+      setList(data as IExercise[]);
+    }
+    setName(name);
+  };
   const get = () => list;
   const getOne = (i: number) => list[i];
-  const add = (exercise: IExercise) => setList([...list, exercise]);
+
+  const add = (exercise: IExercise) => {
+    console.log(exercise);
+    const newList = [...list, exercise];
+    save(newList);
+  };
   const change = (i: number, changes: Partial<IExercise>) => {
     const newList = [...list];
     newList[i] = { ...newList[i], ...changes };
-    setList(newList);
+    save(newList);
   };
-  const remove = (i: number) => setList(list.filter((_, index) => index !== i));
+  const remove = (i: number) => {
+    const newList = list.filter((_, index) => index !== i);
+    save(newList);
+  };
+  const save = (newList: IExercise[]) => {
+    console.log(list);
+    console.log(newList);
 
+    setList(newList);
+    AsyncStorage.setItem(`@GymMemo:list:${listName}`, JSON.stringify(newList));
+  };
   return (
-    <ListContext.Provider value={{ get: get(), add, getOne, change, remove }}>
+    <ListContext.Provider
+      value={{
+        get: get(),
+        add,
+        getOne,
+        change,
+        remove,
+        name: listName,
+        load,
+      }}
+    >
       {children}
     </ListContext.Provider>
   );

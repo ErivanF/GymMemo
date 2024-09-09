@@ -1,8 +1,5 @@
-criar modal para criar exercício
-		criar séries com cargas
-			botão de adicionar série cria dois novos campos
-	modal deve verificar se os campos estão preenchidos
-	modal deve criar um exercício novo
+Na tela de conjuntos, adicionar ao provider a funçãod e carregar ao montar o componente
+Adicionar botão de criar conjuntos
 
 criar tela de exercício
 	tela mostra nome do exercício
@@ -25,4 +22,4 @@ estudar sobre como incluir propagandas
 		a segunda propaganda do dia é sobre remover propagandas
 
 estudar sobre como implementar uma assinatura para remover propagandas
-	valor módico (2 reais no Brasil, 2 dólares no resto do mundo)
+	valor módico (3 reais no Brasil, 2 dólares no resto do mundo)

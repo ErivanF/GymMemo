@@ -1,9 +1,12 @@
+import { ReactNode } from "react";
+import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
+
 export type IExercise = {
   name: string;
-  series: [ISeries];
-  unit: string;
+  series: ISeries[];
+  notes?: string;
 };
-type ISeries = {
+export type ISeries = {
   reps: number;
   load: number;
 };
@@ -14,3 +17,16 @@ export interface colorTheme {
   border: string;
   cardText: string;
 }
+
+export interface ProviderProps {
+  children: ReactNode;
+}
+export type ParamList = {
+  Sets: undefined;
+  Exercises: undefined;
+  Exercise: {
+    index: number;
+  };
+};
+export type INavigationProps = NativeStackScreenProps<ParamList>;
+export type IExerciseProps = NativeStackScreenProps<ParamList, "Exercise">;

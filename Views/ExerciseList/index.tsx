@@ -1,19 +1,30 @@
 import {
-  Modal,
+  BackHandler,
   StyleSheet,
   Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import ExerciseCard from "../ExerciseCard";
+import ExerciseCard from "../../Components/ExerciseCard";
 import { useTheme } from "../../Providers/ThemeProvider";
 import { UseList } from "../../Providers/ListProvider";
 import { useEffect, useState } from "react";
-import CreateExerciseModal from "../CreateExerciseModal";
+import CreateExerciseModal from "../../Components/CreateExerciseModal";
+import React from "react";
+import { INavigationProps } from "../../Interfaces";
 
-const ExerciseList = () => {
+const ExerciseList = ({ navigation }: INavigationProps) => {
   const [showModal, setShowModal] = useState(false);
   const theme = useTheme().get;
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", () => {
+      return null;
+    });
+  }, []);
+  const toExercise = (index: number) => {
+    navigation.push("Exercise", { index: index });
+  };
   const styles = StyleSheet.create({
     container: {
       marginTop: 15,
@@ -21,7 +32,7 @@ const ExerciseList = () => {
       padding: 16,
       borderRadius: 8,
       marginBottom: 16,
-      width: "auto",
+      flex: 1,
     },
 
     createNew: {
@@ -44,12 +55,30 @@ const ExerciseList = () => {
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => setShowModal(true)}>
         <View style={styles.createNew}>
-          <Text style={styles.createNewText}>Criar novo exercício</Text>
+          <Text style={styles.createNewText}>Create new exercise</Text>
         </View>
       </TouchableWithoutFeedback>
-      {list.map((exercise, index) => (
-        <ExerciseCard index={index} exercise={exercise} key={Math.random()} />
-      ))}
+      {list && list.length ? (
+        list.map((exercise, index) => (
+          <TouchableOpacity
+            onPress={() => {
+              console.log("exercise");
+            }}
+          >
+            <ExerciseCard
+              index={index}
+              exercise={exercise}
+              toExercise={toExercise}
+              key={Math.random()}
+            />
+          </TouchableOpacity>
+        ))
+      ) : (
+        <Text style={styles.createNewText}>
+          There are no exercises, create a new exercise clicking on the button
+          above
+        </Text>
+      )}
       <CreateExerciseModal showModal={showModal} setShowModal={setShowModal} />
     </View>
   );

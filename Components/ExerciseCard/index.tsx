@@ -1,14 +1,21 @@
-import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { IExercise } from "../../Interfaces";
 import { useTheme } from "../../Providers/ThemeProvider";
-import { UseList } from "../../Providers/ListProvider";
+import React from "react";
 
 interface IProps {
   exercise: IExercise;
   index: number;
+  toExercise: (index: number) => void;
 }
 
-const ExerciseCard = ({ exercise, index }: IProps) => {
+const ExerciseCard = ({ exercise, index, toExercise }: IProps) => {
   const theme = useTheme().get;
   const styles = StyleSheet.create({
     card: {
@@ -16,7 +23,6 @@ const ExerciseCard = ({ exercise, index }: IProps) => {
       padding: 16,
       borderRadius: 12,
       marginBottom: 16,
-      maxHeight: "auto",
       alignContent: "center",
       flexDirection: "row",
       justifyContent: "space-between",
@@ -53,9 +59,14 @@ const ExerciseCard = ({ exercise, index }: IProps) => {
     },
   });
   return (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => {
+        toExercise(index);
+      }}
+    >
       <Text style={styles.name}>{exercise.name}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
