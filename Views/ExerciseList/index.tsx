@@ -64,6 +64,7 @@ const ExerciseList = ({ navigation }: INavigationProps) => {
             onPress={() => {
               console.log("exercise");
             }}
+            key={Math.random()}
           >
             <ExerciseCard
               index={index}

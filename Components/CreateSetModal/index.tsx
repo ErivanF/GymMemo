@@ -136,7 +136,7 @@ const CreateSetModal = ({ showModal, setShowModal }: IProps) => {
         <Text style={style.title}>Create new set</Text>
         <TextInput
           style={style.input}
-          placeholder="Exercise name"
+          placeholder="Set name"
           placeholderTextColor={theme.cardText}
           onChange={(e) => {
             setName(e.nativeEvent.text);

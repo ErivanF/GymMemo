@@ -38,8 +38,10 @@ const SetsProvider = ({ children }: ProviderProps) => {
   };
   const remove = (name: String) => {
     const newSetList = sets.filter((set) => set !== name);
+
     editSets(newSetList);
     AsyncStorage.setItem("@GymMemo:sets", JSON.stringify(newSetList));
+    AsyncStorage.removeItem(`@GymMemo:list:${name}`);
   };
   const change = (index: number, newName: String) => {
     const newSetList = [

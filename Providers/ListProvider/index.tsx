@@ -31,7 +31,6 @@ const ListProvider = ({ children }: ProviderProps) => {
   const getOne = (i: number) => list[i];
 
   const add = (exercise: IExercise) => {
-    console.log(exercise);
     const newList = [...list, exercise];
     save(newList);
   };
@@ -45,9 +44,6 @@ const ListProvider = ({ children }: ProviderProps) => {
     save(newList);
   };
   const save = (newList: IExercise[]) => {
-    console.log(list);
-    console.log(newList);
-
     setList(newList);
     AsyncStorage.setItem(`@GymMemo:list:${listName}`, JSON.stringify(newList));
   };

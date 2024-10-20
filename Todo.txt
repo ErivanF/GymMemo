@@ -1,4 +1,3 @@
-Na tela de conjuntos, adicionar ao provider a funçãod e carregar ao montar o componente
 Adicionar botão de criar conjuntos
 
 criar tela de exercício

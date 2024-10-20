@@ -12,6 +12,7 @@ import CreateSetModal from "../../Components/CreateSetModal";
 import { UseList } from "../../Providers/ListProvider";
 import React from "react";
 import { INavigationProps } from "../../Interfaces";
+import Feather from "@expo/vector-icons/Feather";
 
 const SetList = ({ navigation }: INavigationProps) => {
   const theme = useTheme().get;
@@ -33,6 +34,11 @@ const SetList = ({ navigation }: INavigationProps) => {
       marginBottom: 16,
       maxHeight: "auto",
       alignContent: "center",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      minWidth: "90%",
+      borderWidth: 1,
+      borderColor: theme.border,
     },
     cardText: {
       color: theme.cardText,
@@ -62,6 +68,7 @@ const SetList = ({ navigation }: INavigationProps) => {
   });
   const setList = useSets().get();
   const load = UseList().load;
+  const remove = useSets().remove;
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => setShowModal(true)}>
@@ -75,13 +82,20 @@ const SetList = ({ navigation }: INavigationProps) => {
             <TouchableOpacity
               onPress={() => {
                 load(value);
-
                 navigation.push("Exercises");
               }}
               key={index}
               style={styles.card}
             >
               <Text style={styles.cardText}>{value}</Text>
+              <Feather
+                size={25}
+                name="trash-2"
+                color={theme.cardText}
+                onPress={() => {
+                  remove(value);
+                }}
+              />
             </TouchableOpacity>
           );
         })
