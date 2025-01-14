@@ -15,10 +15,3 @@ implementar múltiplas linguagens
 	estudar a biblioteca para determinar os passos
 
 procurar formas confiáveis de salvar os dados
-
-estudar sobre como incluir propagandas
-	uma propaganda a cada meia hora no máximo
-		a segunda propaganda do dia é sobre remover propagandas
-
-estudar sobre como implementar uma assinatura para remover propagandas
-	valor módico (3 reais no Brasil, 2 dólares no resto do mundo)
