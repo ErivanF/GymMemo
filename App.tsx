@@ -3,7 +3,6 @@ import ExerciseList from "./Views/ExerciseList";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Providers from "./Providers";
 import SetList from "./Views/SetList";
-import React from "react";
 import ExercisePage from "./Views/Exercise";
 import { ParamList } from "./Interfaces";
 
