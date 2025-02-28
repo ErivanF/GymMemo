@@ -5,6 +5,7 @@ import Providers from "./Providers";
 import SetList from "./Views/SetList";
 import ExercisePage from "./Views/Exercise";
 import { ParamList } from "./Interfaces";
+import "./global.css";
 
 export default function App() {
   const Stack = createNativeStackNavigator<ParamList>();
