@@ -1,11 +1,12 @@
 import { IExercise } from "@/Interfaces";
 import { Text, View } from "react-native";
-import "../global.css"
+// import "../global.css"
 interface IProps {
   exercise: IExercise
 }
 export default function ExerciseCard({ exercise }: IProps) {
-  return <View className="m-3 border-2 rounded-md p-1 border-purple-950 bg-purple-900">
+  return <View
+    className="m-3 border-2 rounded-md p-1 border-purple-950 bg-purple-900 flex flex-row justify-between">
     <View>
       <Text className="text-white font-bold text-2xl">
         {exercise.name}
